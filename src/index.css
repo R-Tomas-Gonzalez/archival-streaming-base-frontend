@@ -1,0 +1,28 @@
+body {
+  margin: 0 auto;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+@font-face {
+  font-family: 'MoonLight';
+  src: local('Moonlight'), url(./fonts/Moon-Light.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'MoonLight-Reg';
+  src: local('Moonlight-Reg'), url(./fonts/Moon2.0-Regular.otf) format('opentype');
+}
+
+::placeholder {
+  color: #fff;
+  opacity: .5;
+}

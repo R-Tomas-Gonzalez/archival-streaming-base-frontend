@@ -1,0 +1,841 @@
+/* Main App Background / Global Styling */
+
+.App-background {
+  width: 100%;
+  min-height: 100%;
+  color: #fff;
+  background: linear-gradient(-45deg, #cff5ff, #64b2cd, #2e94b6, #267793, #1c586c);
+  position: absolute;
+  background-size: 400%, 400%;
+  animation: change 15s ease-out infinite;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 1080px;
+  margin: 50px auto 75px auto;
+}
+
+
+@keyframes change {
+  0% {
+    background-position: 0 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+/* login styling and container */
+
+.login-container-1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  flex-direction: column;
+  /* position: relative; */
+  /* min-height: 65vh; */
+}
+
+.site-title {
+  display: flex;
+  font-family: moonlight;
+}
+
+
+.login-container-2 {
+  display: flex;
+  align-items: center;
+}
+
+.login-container-3 {
+  display: flex;
+  align-items: center;
+  overflow: visible;
+  max-width: 745px;
+}
+
+.user-row {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: auto;
+  padding: 40px;
+}
+
+.login-container-3:empty {
+  display: none;
+}
+
+/* User Box and Container */
+
+
+.user-box-container {
+  text-align: center;
+  cursor: pointer;
+}
+
+.user-box {
+  width: 200px;
+  height: 200px;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.256);
+  border-radius: 5px;
+  margin: 16px;
+  box-sizing: border-box;
+  box-shadow: 0 8px 6px -6px rgba(255, 255, 255, 0.344);
+}
+
+.user-box-container:hover {
+  transform: translate3D(0, -1px, 0) scale(1.1);
+  transition: all .4s ease;
+  /* zoom in */
+}
+
+.user-text {
+  margin-top: 20px;
+  font-family: Moonlight;
+  font-size: 24px;
+}
+
+
+/* Registration Container and Boxes */
+
+.registration-container {
+  margin-top: 16px;
+  margin-right: 25px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.registration-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 121px;
+  height: 121px;
+  padding: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.256);
+  box-shadow: 0 8px 6px -6px rgba(255, 255, 255, 0.344);
+}
+
+.registration-container:hover {
+  transform: translate3D(0, -1px, 0) scale(1.1);
+  transition: all .4s ease;
+  /* zoom in */
+}
+
+.registration-icon {
+  margin-left: 20px;
+}
+
+.new-user-text {
+  margin-top: 20px;
+  font-family: Moonlight;
+  font-size: 24px;
+}
+
+/* For user and registration styling... Takes out hyperlink colors */
+
+.link-styling {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Registration Form */
+
+.form-container {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+}
+
+.registration-form {
+  margin: auto;
+  width: 300px;
+  border-radius: 4px;
+  background: #edfbff5a;
+
+  box-shadow: 0 0 50px 5px rgba(255, 255, 255, 0.344);
+}
+
+input[type=email] {
+  padding: 10px;
+  margin: 0px 15px 15px 15px;
+  width: 250px;
+  color: white;
+  font-size: 18px;
+
+  border: none;
+  outline: none;
+  background: transparent;
+  border-bottom: 1px solid #fff;
+}
+
+input[type=text] {
+  padding: 10px;
+  margin: 15px;
+  width: 250px;
+  color: white;
+  font-size: 18px;
+
+  border: none;
+  outline: none;
+  background: transparent;
+  border-bottom: 1px solid #fff;
+}
+
+input[type=password] {
+  padding: 10px;
+  margin: 15px;
+  width: 250px;
+  color: white;
+  font-size: 18px;
+
+  border: none;
+  outline: none;
+  background: transparent;
+  border-bottom: 1px solid #fff;
+}
+
+.auth-button {
+  padding: 10px;
+  margin: 20px 15px 15px 15px;
+  width: 272px;
+  align-items: center;
+  color: white;
+  font-family: Moonlight;
+
+  background: #0b4c5b;
+  border: 1px solid #575757;
+  border-radius: 4px;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.register-welcome-message {
+  padding: 8px;
+  margin: 15px 15px 10px 15px;
+  font-family: Moonlight;
+  text-align: left;
+  font-size: 18px;
+  color: white;
+}
+
+.go-home-link {
+  padding: 10px;
+  margin: 0px 15px 10px 15px;
+  font-family: Moonlight;
+  text-align: center;
+}
+
+/* NavBar */
+
+.middle-links {
+  display: flex;
+  margin: 0 auto;
+  font-size: 30px;
+  align-items: center;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Moonlight;
+}
+
+.main-nav li {
+  list-style: none;
+  text-align: center;
+}
+
+.mid-links {
+  color: white;
+  text-decoration: none;
+  margin: 15px 30px;
+}
+
+.mid-links-games {
+  color: white;
+  margin: 15px 30px;
+  text-decoration: none;
+
+  font-size: 40px;
+}
+
+.mid-links-games-movies {
+  color: white;
+  margin: 15px 30px;
+  text-decoration: none;
+
+  font-size: 25px;
+}
+
+.mid-links-games-images {
+  color: white;
+  margin: 15px 30px;
+  text-decoration: none;
+
+  font-size: 25px;
+}
+
+.mid-links-images-games {
+  color: white;
+  margin: 15px 30px;
+  text-decoration: none;
+
+
+  font-size: 25px;
+}
+
+.mid-links-images-movies {
+  color: white;
+  margin: 15px 30px;
+  text-decoration: none;
+
+  font-size: 25px;
+}
+
+.mid-links-images {
+  color: white;
+  margin: 15px 30px;
+  text-decoration: none;
+
+  font-size: 40px;
+}
+
+.mid-links-movies-games {
+  color: white;
+  margin: 15px 30px;
+  text-decoration: none;
+
+
+  font-size: 25px;
+}
+
+.mid-links-movies {
+  color: white;
+  margin: 15px 30px;
+  text-decoration: none;
+
+  font-size: 40px;
+}
+
+.mid-links-movies-images {
+  color: white;
+  margin: 15px 30px;
+  text-decoration: none;
+
+  font-size: 25px;
+}
+
+/* NavBar Certain Page Styling */
+
+
+/* Card Containers */
+
+.main-container {
+  margin-bottom: 50px;
+}
+
+.game-container {
+  font-family: Moonlight;
+}
+
+.photo-container {
+  font-family: Moonlight;
+}
+
+.movie-container {
+  font-family: Moonlight;
+}
+
+.card-row {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: auto;
+  border-radius: 7px;
+  padding: 12px;
+
+  background: rgba(255, 255, 255, 0.256)
+}
+
+.image-card-row {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: auto;
+  border-radius: 7px;
+  padding: 12px;
+
+  background: rgba(255, 255, 255, 0.256)
+}
+
+
+
+/* Cards */
+
+.modal-image {
+  border-radius: 7px;
+}
+
+.photo-ui-card {
+  position: relative;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.photo-ui-card:hover {
+  transform: translate3D(0, -1px, 0) scale(1.1);
+  transition: all .4s ease;
+  /* zoom in */
+}
+
+.game-ui-card {
+  position: relative;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.game-ui-card:hover {
+  transform: translate3D(0, -1px, 0) scale(1.1);
+  transition: all .4s ease;
+  /* zoom in */
+}
+
+.ui-card {
+  margin: 10px;
+  cursor: pointer;
+}
+
+.ui-card:hover {
+  transform: translate3D(0, -1px, 0) scale(1.1);
+  transition: all .4s ease;
+  /* zoom in */
+}
+
+.image {
+  border-radius: 7px;
+  box-shadow: 0 8px 6px -6px rgba(255, 255, 255, 0.509)
+}
+
+.card-title {
+  font-family: Moonlight;
+  font-size: .85em;
+  font-weight: bold;
+}
+
+
+/* Modal Styling */
+
+.overlay-styles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, .7);
+  z-index: 1000;
+}
+
+.modal-styles {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 25px;
+  z-index: 1000;
+  color: black;
+  border-radius: 7px;
+  text-align: center;
+  font-family: Moonlight;
+}
+
+.registration-modal-styles {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #267793;
+  padding: 25px;
+  z-index: 1000;
+  color: black;
+  border-radius: 7px;
+  text-align: center;
+  font-family: Moonlight;
+}
+
+.modal-button {
+  position: absolute;
+  border-radius: 7px;
+  padding: 10px;
+  cursor: pointer;
+  border: none;
+  background: rgb(0, 124, 177);
+  color: rgb(255, 255, 255);
+  top: -10px;
+  right: -10px;
+}
+
+/* Movie Preview styling */
+
+.movie-preview-backdrop {
+  overflow: hidden;
+  border-radius: 7px;
+}
+
+.image-preview-backdrop {
+  overflow: hidden;
+  border-radius: 7px;
+}
+
+.preview-header {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  background: no-repeat;
+  background-color: black;
+  border-radius: 7px;
+  min-height: 600px;
+  /* justify-content: flex-end; */
+}
+
+.image-preview-header {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  background: no-repeat;
+  background-color: black;
+  border-radius: 7px;
+  min-height: 650px;
+  justify-content: flex-end;
+}
+
+.image-preview-image {
+  position: absolute;
+  justify-self: center;
+  align-self: center;
+  width: 1100px;
+  border-radius: 7px;
+
+}
+
+.image-preview-background {
+  height: 650px;
+  position: relative;
+  border-radius: 7px;
+  display: flex;
+  overflow: hidden;
+  background: no-repeat;
+  background-color: black;
+  width: 100%;
+  justify-content: center;
+}
+
+.preview-background {
+  position: relative;
+  border-radius: 7px;
+  display: flex;
+  overflow: hidden;
+  background: no-repeat;
+  background-color: black;
+  width: 100%;
+}
+
+.preview-image {
+  width: 100%;
+  min-height: 100%;
+  border-radius: 7px;
+}
+
+.image-poster-overlay {
+  position: absolute;
+  width: 100%;
+  min-height: 100%;
+  border-radius: 7px;
+  background-image: linear-gradient(90deg, rgba(72, 72, 72, 0.300), rgba(0, 0, 0, 0), rgba(72, 72, 72, 0.300));
+}
+
+.poster-overlay {
+  position: absolute;
+  width: 100%;
+  min-height: 100%;
+  border-radius: 7px;
+  background-image: linear-gradient(to right, rgb(0, 0, 0), rgba(0, 0, 0, .3));
+}
+
+.preview-details {
+  position: absolute;
+  border-radius: 7px;
+  padding: 40px;
+  display: flex;
+  font-family: MoonLight;
+  align-self: center;
+}
+
+.game-preview-details {
+  position: absolute;
+  border-radius: 7px;
+  padding: 40px;
+  font-family: MoonLight;
+  align-self: flex-end;
+}
+
+.preview-card-image {
+  border-radius: 7px;
+  margin-right: 40px;
+}
+
+.preview-card-video {
+  position: relative;
+  border-radius: 7px;
+  margin-bottom: 10px;
+}
+
+.title-release {
+  position: relative;
+  align-self: flex-end;
+}
+
+
+.image-preview-details {
+  position: absolute;
+  border-radius: 7px;
+  padding: 10px;
+  font-family: MoonLight;
+  align-self: flex-end;
+  justify-self: flex-end;
+}
+
+.image-title-release {
+  position: relative;
+
+}
+
+.image-title {
+  font-size: 150%;
+}
+
+.title {
+  font-size: 250%;
+}
+
+/* User Favorites Container */
+
+.user-faves-containers {
+  display: flex;
+  flex-direction: column;
+  height: 560px;
+  overflow-y: scroll;
+  border-radius: 7px;
+}
+
+.user-favorites {
+  font-family: Moonlight;
+}
+
+.user-favorites-container {
+  font-family: MoonLight;
+}
+
+.action-favorites-container {
+  font-family: Moonlight;
+}
+
+.image-action-favorites-container {
+  font-family: moonlight;
+}
+
+.action-card-row {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: auto;
+  border-radius: 7px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.256)
+}
+
+.ui-faves-card {
+  position: relative;
+  margin: 10px;
+  cursor: pointer;
+  max-width: fit-content;
+}
+
+.ui-faves-card:hover {
+  transform: translate3D(0, -1px, 0) scale(1.1);
+  transition: all .4s ease;
+  /* zoom in */
+}
+
+.faves-image {
+  border-radius: 7px;
+  box-shadow: 0 8px 6px -6px rgba(255, 255, 255, 0.509)
+}
+
+.user-faves-card-row {
+  display: flex;
+  flex-wrap: nowrap;
+  max-height: fit-content;
+  overflow: auto;
+  border-radius: 7px;
+  padding: 22px 12px 12px 12px;
+  background: rgba(255, 255, 255, 0.256)
+}
+
+.delete-user-fave-btn {
+  position: absolute;
+  border-radius: 7px;
+  padding: 5px;
+  cursor: pointer;
+  border: none;
+  background: rgba(0, 124, 177, 0.564);
+  color: rgb(255, 255, 255);
+  top: -10px;
+  right: -10px;
+}
+
+.add-faves-btn {
+  position: absolute;
+  border-radius: 7px;
+  padding: 5px;
+  cursor: pointer;
+  border: none;
+  background: rgba(0, 124, 177, 0.564);
+  color: rgb(255, 255, 255);
+  top: -10px;
+  right: -10px;
+}
+
+.add-faves-btn-preview {
+  position: relative;
+  margin-bottom: 5px;
+  border-radius: 7px;
+  padding: 5px;
+  cursor: pointer;
+  border: none;
+  background: rgb(0, 124, 177);
+  color: rgb(255, 255, 255);
+}
+
+/* Tooltips */
+.add-faves-btn-preview::before,
+.add-faves-btn-preview::after {
+  --scale: 0;
+  --tooltip-color: orange;
+  --arrow-size: 10px;
+  position: absolute;
+  content: "";
+  left: 50%;
+  top: .25rem;
+  transform: translateX(-50%) translateY(var(--translate-y, 0)) scale(var(--scale));
+  transition: 100ms transform;
+  transform-origin: top center;
+}
+
+.add-faves-btn-preview::before {
+  --translate-y: calc(100% + var(--arrow-size));
+  content: attr(data-text);
+  font-family: moonlight;
+  padding: .5rem;
+  border-radius: 7px;
+  width: max-content;
+  background: var(--tooltip-color);
+}
+
+.add-faves-btn-preview:hover::before,
+.add-faves-btn-preview:hover::after {
+  --scale: 1;
+}
+
+.add-faves-btn-preview:after {
+  --translate-y: calc(2.3 * var(--arrow-size));
+  content: '';
+  border: var(--arrow-size) solid transparent;
+  border-bottom-color: var(--tooltip-color);
+  transform-origin: bottom center;
+}
+
+/*  */
+.add-faves-btn::before,
+.add-faves-btn::after {
+  --scale: 0;
+  --tooltip-color: orange;
+  --arrow-size: 10px;
+  position: absolute;
+  content: "";
+  right: 10%;
+  top: .25rem;
+  transform: translateY(var(--translate-y, 0)) scale(var(--scale));
+  transition: 100ms transform;
+  transform-origin: top center;
+}
+
+.add-faves-btn::before {
+  --translate-y: calc(100% + var(--arrow-size));
+  content: attr(data-text);
+  font-family: moonlight;
+  padding: .5rem;
+  border-radius: 7px;
+  width: max-content;
+  background: var(--tooltip-color);
+}
+
+.add-faves-btn:hover::before,
+.add-faves-btn:hover::after {
+  --scale: 1;
+}
+
+.add-faves-btn:after {
+  --translate-y: calc(2.5 * var(--arrow-size));
+  content: '';
+  border: var(--arrow-size) solid transparent;
+  border-bottom-color: var(--tooltip-color);
+  transform-origin: bottom center;
+}
+
+.delete-user-fave-btn::before,
+.delete-user-fave-btn::after {
+  --scale: 0;
+  --tooltip-color: orange;
+  --arrow-size: 10px;
+  position: absolute;
+  content: "";
+  right: 10%;
+  top: .25rem;
+  transform: translateY(var(--translate-y, 0)) scale(var(--scale));
+  transition: 100ms transform;
+  transform-origin: top center;
+}
+
+.delete-user-fave-btn::before {
+  --translate-y: calc(100% + var(--arrow-size));
+  content: attr(data-text);
+  font-family: moonlight;
+  padding: .5rem;
+  border-radius: 7px;
+  width: max-content;
+  background: var(--tooltip-color);
+}
+
+.delete-user-fave-btn:hover::before,
+.delete-user-fave-btn:hover::after {
+  --scale: 1;
+}
+
+.delete-user-fave-btn:after {
+  --translate-y: calc(2.5 * var(--arrow-size));
+  content: '';
+  border: var(--arrow-size) solid transparent;
+  border-bottom-color: var(--tooltip-color);
+  transform-origin: bottom center;
+}
