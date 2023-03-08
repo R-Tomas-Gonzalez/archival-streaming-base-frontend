@@ -10,7 +10,7 @@ function Users(props) {
             method: 'POST',
             credentials: 'include',
             headers: {
-                'Access-Control-Allow-Origin': 'https://archival-streaming-base-01.netlify.app/',
+                'Access-Control-Allow-Origin': '*',
                 'Vary': "Origin",
                 "Content-Type": "application/json",
             },
