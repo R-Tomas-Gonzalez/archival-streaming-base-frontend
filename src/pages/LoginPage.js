@@ -14,7 +14,7 @@ function LoginPage(props) {
     useEffect(() => {
         fetch('https://shy-pink-shark-yoke.cyclic.app/users', {
             headers: {
-                'Access-Control-Allow-Origin': 'https://archival-streaming-base-01.netlify.app/',
+                'Access-Control-Allow-Origin': '*',
                 'Content-Type': 'application/json'
             },
             credentials: 'include'

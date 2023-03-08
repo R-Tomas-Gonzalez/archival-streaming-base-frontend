@@ -39,7 +39,7 @@ function App() {
       const checkLoginStatus = () => {
         fetch("https://shy-pink-shark-yoke.cyclic.app/login", {
           headers: {
-            'Access-Control-Allow-Origin': 'https://archival-streaming-base-01.netlify.app/',
+            'Access-Control-Allow-Origin': '*',
             'Content-Type': 'application/json'
           },
           credentials: 'include'
@@ -72,7 +72,7 @@ function App() {
   const handleLogout = () => {
     fetch('https://shy-pink-shark-yoke.cyclic.app/logout', {
       headers: {
-        'Access-Control-Allow-Origin': 'https://archival-streaming-base-01.netlify.app/',
+        'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json'
       },
       credentials: 'include'
