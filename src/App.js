@@ -72,7 +72,7 @@ function App() {
   const handleLogout = () => {
     fetch('https://shy-pink-shark-yoke.cyclic.app/logout', {
       headers: {
-        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Origin': 'origin',
         'Content-Type': 'application/json'
       },
       credentials: 'include'
