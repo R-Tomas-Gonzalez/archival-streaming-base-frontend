@@ -14,7 +14,7 @@ function LoginPage(props) {
     useEffect(() => {
         fetch('https://shy-pink-shark-yoke.cyclic.app/users', {
             headers: {
-                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Origin': 'origin',
                 'Content-Type': 'application/json'
             },
             credentials: 'include'
@@ -24,7 +24,7 @@ function LoginPage(props) {
                 setUsers([
                     ...users
                 ])
-            })
+            }).catch(error => console.log(error))
     }, [])
 
     const handleSuccessfulAuth = (data) => {
