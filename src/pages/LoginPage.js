@@ -12,7 +12,13 @@ function LoginPage(props) {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch('http://localhost:3000/users')
+        fetch('https://shy-pink-shark-yoke.cyclic.app/users', {
+            headers: {
+                'Access-Control-Allow-Origin': 'https://archival-streaming-base-01.netlify.app/',
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include'
+        })
             .then(resp => resp.json())
             .then(users => {
                 setUsers([

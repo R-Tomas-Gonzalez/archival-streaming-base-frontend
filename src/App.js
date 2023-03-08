@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Route, Routes } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import axios from 'axios';
@@ -11,6 +11,8 @@ const gameAPI = process.env.REACT_APP_GAME_KEY
 
 function App() {
 
+  const effectRan = useRef(false);
+
   const [loggedInStatus, setLoggedInStatus] = React.useState('NOT_LOGGED_IN');
   const [user, setUser] = React.useState({});
   const [movies, setMovies] = React.useState([]);
@@ -18,87 +20,49 @@ function App() {
   const [photos, setPhotos] = React.useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      await Promise.all([
-        axios.get(`https://api.themoviedb.org/3/trending/movie/week?api_key=${movieAPI}`),
-        axios.get(`https://api.rawg.io/api/games?key=${gameAPI}&platforms=1,18&ordering=rated`),
-        axios.get(`https://pixabay.com/api/?key=${pixAPI}&orientation=horizontal&image_type=photo`),
-      ])
-        .then(data => {
-          setMovies(data[0].data.results)
-          setGames(data[1].data.results)
-          setPhotos(data[2].data.hits)
+
+
+    if (effectRan.current === false) {
+      const fetchData = async () => {
+        await Promise.all([
+          axios.get(`https://api.themoviedb.org/3/trending/movie/week?api_key=${movieAPI}`),
+          axios.get(`https://api.rawg.io/api/games?key=${gameAPI}&platforms=1,18&ordering=rated`),
+          axios.get(`https://pixabay.com/api/?key=${pixAPI}&orientation=horizontal&image_type=photo`),
+        ])
+          .then(data => {
+            setMovies(data[0].data.results)
+            setGames(data[1].data.results)
+            setPhotos(data[2].data.hits)
+          })
+      }
+
+      const checkLoginStatus = () => {
+        fetch("https://shy-pink-shark-yoke.cyclic.app/login", {
+          headers: {
+            'Access-Control-Allow-Origin': 'https://archival-streaming-base-01.netlify.app/',
+            'Content-Type': 'application/json'
+          },
+          credentials: 'include'
         })
+          .then((resp) => resp.json())
+          .then(resp => {
+            if (resp.logged_in && loggedInStatus === "NOT_LOGGED_IN") {
+              setLoggedInStatus("LOGGED_IN");
+              setUser(resp.user);
+            } else if (!resp.logged_in & loggedInStatus === "LOGGED_IN") {
+              setLoggedInStatus("NOT_LOGGED_IN");
+              setUser({})
+            }
+          })
+          .catch(error => { console.log("check login error", error) })
+      }
+
+      fetchData();
+      checkLoginStatus();
+      return () => { effectRan.current = true };
     }
-
-    const checkLoginStatus = () => {
-      axios.get("https://shy-pink-shark-yoke.cyclic.app/login", {
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        withCredentials: true
-      })
-        .then(resp => {
-          console.log(resp);
-          if (resp.data.logged_in && loggedInStatus === "NOT_LOGGED_IN") {
-            setLoggedInStatus("LOGGED_IN");
-            setUser(resp.data.user);
-          } else if (!resp.data.logged_in & loggedInStatus === "LOGGED_IN") {
-            setLoggedInStatus("NOT_LOGGED_IN");
-            setUser({})
-          }
-        })
-        .catch(error => { console.log("check login error", error) })
-    }
-
-    //   axios.get("http://localhost:3000/login", {
-    //     headers: {
-    //       'Content-Type': 'application/json'
-    //     },
-    //     withCredentials: true
-    //   })
-    //     .then(resp => {
-    //       console.log(resp);
-    //       if (resp.data.logged_in && loggedInStatus === "NOT_LOGGED_IN") {
-    //         setLoggedInStatus("LOGGED_IN");
-    //         setUser(resp.data.user);
-    //       } else if (!resp.data.logged_in & loggedInStatus === "LOGGED_IN") {
-    //         setLoggedInStatus("NOT_LOGGED_IN");
-    //         setUser({})
-    //       }
-    //     })
-    //     .catch(error => { console.log("check login error", error) })
-    // }
-
-    fetchData();
-    checkLoginStatus();
 
   }, [loggedInStatus])
-
-  const checkLoginStatus = () => {
-    axios.get("http://localhost:3000/login", {
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      withCredentials: true
-    })
-      .then(resp => {
-        console.log(resp.data.logged_in, loggedInStatus, user)
-        if (resp.data.logged_in && loggedInStatus === "NOT_LOGGED_IN") {
-          setLoggedInStatus("LOGGED_IN");
-          setUser(resp.data.user);
-        } else if (!resp.data.logged_in & loggedInStatus === "LOGGED_IN") {
-          setLoggedInStatus("NOT_LOGGED_IN");
-          setUser({})
-        }
-      })
-      .catch(error => { console.log("check login error", error) })
-  }
-
-
-  const returnData = () => {
-    console.log(movies, games, photos);
-  }
 
   const handleLogin = (data) => {
     setLoggedInStatus("LOGGED_IN");
@@ -106,11 +70,12 @@ function App() {
   }
 
   const handleLogout = () => {
-    axios.get('http://localhost:3000/logout', {
+    fetch('https://shy-pink-shark-yoke.cyclic.app/logout', {
       headers: {
+        'Access-Control-Allow-Origin': 'https://archival-streaming-base-01.netlify.app/',
         'Content-Type': 'application/json'
       },
-      withCredentials: true
+      credentials: 'include'
     })
       .then(() => {
         setLoggedInStatus("NOT_LOGGED_IN");

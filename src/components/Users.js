@@ -5,21 +5,22 @@ import axios from 'axios';
 function Users(props) {
 
     const handleLoginClick = () => {
-        axios.post("https://shy-pink-shark-yoke.cyclic.app/login",
-            {
-                'id': props.user._id
+        let data = { 'id': props.user._id }
+        fetch("https://shy-pink-shark-yoke.cyclic.app/login", {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                "Content-Type": "application/json",
             },
-            {
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                withCredentials: true
-            })
-            .then((res) => {
-                props.handleSuccessfulAuth(res.data);
+            body: JSON.stringify(data)
+        })
+            .then((resp) => resp.json())
+            .then(resp => {
+                props.handleSuccessfulAuth(resp);
             })
             .catch(error => { console.log('login error', error) })
     }
+
 
     return (
         < div className="user-box-container" onClick={() => { handleLoginClick() }}>
