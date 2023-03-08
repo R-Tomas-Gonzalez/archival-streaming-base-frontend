@@ -14,7 +14,6 @@ function LoginPage(props) {
     useEffect(() => {
         fetch('https://shy-pink-shark-yoke.cyclic.app/users', {
             headers: {
-                'Access-Control-Allow-Origin': 'origin',
                 'Content-Type': 'application/json'
             },
             credentials: 'include'
