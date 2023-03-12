@@ -53,7 +53,7 @@ const MoviesPage = (props) => {
                 setThrillerMovies(grabMovieInfo(thrillerMovieResults));
             })
 
-        fetch(`http://localhost:3000/users/${props.currentUser._id}`)
+        fetch(`https://shy-pink-shark-yoke.cyclic.app/users/${props.currentUser._id}`)
             .then(resp => resp.json())
             .then(data => {
                 setUserFaves(data.movies);
@@ -65,7 +65,7 @@ const MoviesPage = (props) => {
         const userId = props.currentUser._id;
         let fetchedUser;
         try {
-            const userRes = await fetch(`http://localhost:3000/users/${userId}`);
+            const userRes = await fetch(`https://shy-pink-shark-yoke.cyclic.app/users/${userId}`);
             fetchedUser = await userRes.json();
         } catch (error) {
             console.log(error);
@@ -83,7 +83,7 @@ const MoviesPage = (props) => {
             }
 
             try {
-                const updatedUserRes = await fetch(`http://localhost:3000/users/${userId}`, {
+                const updatedUserRes = await fetch(`https://shy-pink-shark-yoke.cyclic.app/users/${userId}`, {
                     method: 'PATCH',
                     credentials: 'include',
                     headers: {
@@ -107,7 +107,7 @@ const MoviesPage = (props) => {
         const userId = props.currentUser._id;
         let fetchedUser;
         try {
-            const userRes = await fetch(`http://localhost:3000/users/${userId}`);
+            const userRes = await fetch(`https://shy-pink-shark-yoke.cyclic.app/users/${userId}`);
             fetchedUser = await userRes.json();
         } catch (error) {
             console.log(error);
@@ -120,7 +120,7 @@ const MoviesPage = (props) => {
         let updatedUser;
 
         try {
-            const updatedUserRes = await fetch(`http://localhost:3000/users/${userId}`, {
+            const updatedUserRes = await fetch(`https://shy-pink-shark-yoke.cyclic.app/users/${userId}`, {
                 method: 'PATCH',
                 credentials: 'include',
                 headers: {
