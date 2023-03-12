@@ -631,6 +631,10 @@ input[type=password] {
 
 /* User Favorites Container */
 
+.faves-card-title {
+  inline-size: 200px;
+}
+
 .user-faves-containers {
   display: flex;
   flex-direction: column;

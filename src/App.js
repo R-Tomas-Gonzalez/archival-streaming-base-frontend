@@ -2,6 +2,7 @@ import './App.css';
 import React, { useEffect, useRef } from 'react';
 import { Route, Routes } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
+import MoviesPage from './pages/MoviesPage';
 import axios from 'axios';
 import HomePage from './pages/HomePage';
 
@@ -75,6 +76,7 @@ function App() {
       },
       credentials: 'include'
     })
+      .then((resp) => resp.json())
       .then(() => {
         setLoggedInStatus("NOT_LOGGED_IN");
         setUser({});
@@ -103,15 +105,14 @@ function App() {
           <Route
             exact
             path={"/home-page"}
-            element={(<HomePage currentUser={user} handleLogout={() => handleLogout()} movies={movies} games={games} photos={photos} />)}
+            element={<HomePage currentUser={user} handleLogout={() => handleLogout()} movies={movies} games={games} photos={photos} />}
+          />
+          <Route
+            exact
+            path={"/movies"}
+            element={(<MoviesPage currentUser={user} handleLogout={() => handleLogout()} movies={movies} />)}
           />
           {/* <Route
-              exact
-              path={"/movies"}
-              render={props => (<MoviesPage {...props} currentUser={user} handleLogout={this.handleLogout} movies={movies} />
-              )}
-            />
-            <Route
               exact
               path={"/games"}
               render={props => (<GamesPage {...props} currentUser={user} handleLogout={this.handleLogout} games={games} game={games[0]} />

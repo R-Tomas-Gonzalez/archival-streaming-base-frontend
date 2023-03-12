@@ -1,11 +1,10 @@
 import React from 'react';
 import { HiOutlineUser } from 'react-icons/hi';
-import axios from 'axios';
-
 function Users(props) {
 
     const handleLoginClick = () => {
         let data = { 'id': props.user._id }
+
         fetch("https://shy-pink-shark-yoke.cyclic.app/login", {
             method: 'POST',
             credentials: 'include',
