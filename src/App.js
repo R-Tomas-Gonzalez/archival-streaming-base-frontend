@@ -22,7 +22,6 @@ function App() {
 
   useEffect(() => {
 
-
     if (effectRan.current === false) {
       const fetchData = async () => {
         await Promise.all([

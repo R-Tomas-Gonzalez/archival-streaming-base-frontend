@@ -53,12 +53,15 @@ const MoviesPage = (props) => {
                 setThrillerMovies(grabMovieInfo(thrillerMovieResults));
             })
 
-        fetch(`https://shy-pink-shark-yoke.cyclic.app/users/${props.currentUser._id}`)
-            .then(resp => resp.json())
-            .then(data => {
-                setUserFaves(data.movies);
-            })
-    }, [])
+        if (props.currentUser._id) {
+            fetch(`https://shy-pink-shark-yoke.cyclic.app/users/${props.currentUser._id}`)
+                .then(resp => resp.json())
+                .then(data => {
+                    setUserFaves(data.movies);
+                })
+        }
+
+    }, [props.currentUser._id])
 
     const addToFaves = async (movie) => {
 
@@ -136,7 +139,6 @@ const MoviesPage = (props) => {
         }
 
     }
-
 
     return (
         <div className="wrapper">

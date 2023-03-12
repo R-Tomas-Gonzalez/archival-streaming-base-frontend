@@ -3,7 +3,6 @@ import { HiOutlineLogout, HiOutlineUser } from 'react-icons/hi';
 import { NavLink } from 'react-router-dom';
 
 const NavBar = (props) => {
-
     return (
         <nav>
             <ul className="main-nav">
