@@ -9,7 +9,7 @@ const MoviesCard = (props) => {
 
     return (
         <div className="favorite-column">
-            <div className="ui-faves-card" onClick={() => props.handleStateClick(props.movie)}>
+            <div className="ui-faves-card" onClick={() => props.handlePreviewClick(props.movie)}>
                 <div className="faves-card">
                     <img className="faves-image" srcSet={`${img} 1.5x`} alt='movie' />
                     <button className="add-faves-btn" data-text="add to faves" onClick={(e) => { e.stopPropagation(); props.addToFaves(props.movie) }}><FaRegHeart size="1.5em" /></button>

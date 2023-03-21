@@ -3,8 +3,9 @@ import React, { useEffect, useRef } from 'react';
 import { Route, Routes } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import MoviesPage from './pages/MoviesPage';
-import axios from 'axios';
 import HomePage from './pages/HomePage';
+import GamesPage from './pages/GamesPage';
+import axios from 'axios';
 
 const pixAPI = process.env.REACT_APP_PIX_KEY
 const movieAPI = process.env.REACT_APP_MOVIE_KEY
@@ -21,7 +22,6 @@ function App() {
   const [photos, setPhotos] = React.useState([]);
 
   useEffect(() => {
-
     if (effectRan.current === false) {
       const fetchData = async () => {
         await Promise.all([
@@ -111,13 +111,13 @@ function App() {
             path={"/movies"}
             element={(<MoviesPage currentUser={user} handleLogout={() => handleLogout()} movies={movies} />)}
           />
+          <Route
+            exact
+            path={"/games"}
+            element={(<GamesPage currentUser={user} handleLogout={() => handleLogout()} games={games} />
+            )}
+          />
           {/* <Route
-              exact
-              path={"/games"}
-              render={props => (<GamesPage {...props} currentUser={user} handleLogout={this.handleLogout} games={games} game={games[0]} />
-              )}
-            />
-            <Route
               exact
               path={"/images"}
               render={props => (<ImagesPage {...props} currentUser={user} handleLogout={this.handleLogout} photos={photos} />

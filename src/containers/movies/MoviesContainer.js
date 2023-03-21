@@ -6,7 +6,7 @@ const MoviesContainer = (props) => {
         <div className="action-favorites-container">
             <h2>{props.genre}</h2>
             <div className="action-card-row">
-                {props.movies.map((movie) => <MoviesCard key={movie.id} movie={movie} handleStateClick={props.handleStateClick} addToFaves={props.addToFaves} />)}
+                {props.movies.map((movie) => <MoviesCard key={movie.id} movie={movie} handlePreviewClick={props.handlePreviewClick} addToFaves={props.addToFaves} />)}
             </div>
         </div>
     )

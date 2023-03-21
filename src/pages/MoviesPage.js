@@ -102,7 +102,7 @@ const MoviesPage = (props) => {
         }
     }
 
-    const handleStateClick = (movie) => {
+    const handlePreviewClick = (movie) => {
         setMoviePreview(movie);
     }
 
@@ -132,7 +132,6 @@ const MoviesPage = (props) => {
                 body: JSON.stringify({ movies: filteredMovies })
             });
             updatedUser = await updatedUserRes.json();
-            console.log(updatedUser);
             setUserFaves(updatedUser.movies);
         } catch (error) {
             console.log(error);
@@ -147,16 +146,16 @@ const MoviesPage = (props) => {
                 {Object.keys(moviePreview).length === 0 ? <MoviePreviewContainer movie={props.movies[0]} addToFaves={(movie) => addToFaves(movie)} /> : <MoviePreviewContainer movie={moviePreview} addToFaves={(movie) => addToFaves(movie)} />}
             </div>
             <div className="user-favorites-container">
-                <UserFavesContainer currentUser={props.currentUser} movies={userFaves} handleStateClick={handleStateClick} handleDelete={handleDelete} />
+                <UserFavesContainer currentUser={props.currentUser} movies={userFaves} handlePreviewClick={handlePreviewClick} handleDelete={handleDelete} />
             </div>
             <hr></hr>
             <div className="user-faves-containers">
-                <MoviesContainer movies={trendingMovies} genre={"trending"} handleStateClick={handleStateClick} addToFaves={(movie) => addToFaves(movie)} />
-                <MoviesContainer movies={actionMovies} genre={"action"} handleStateClick={handleStateClick} addToFaves={(movie) => addToFaves(movie)} />
-                <MoviesContainer movies={docuMovies} genre={"documentary"} handleStateClick={handleStateClick} addToFaves={(movie) => addToFaves(movie)} />
-                <MoviesContainer movies={dramaMovies} genre={"drama & family"} handleStateClick={handleStateClick} addToFaves={(movie) => addToFaves(movie)} />
-                <MoviesContainer movies={scifiMovies} genre={"sci-fi"} handleStateClick={handleStateClick} addToFaves={(movie) => addToFaves(movie)} />
-                <MoviesContainer movies={thrillerMovies} genre={"thriller"} handleStateClick={handleStateClick} addToFaves={(movie) => addToFaves(movie)} />
+                <MoviesContainer movies={trendingMovies} genre={"trending"} handlePreviewClick={handlePreviewClick} addToFaves={(movie) => addToFaves(movie)} />
+                <MoviesContainer movies={actionMovies} genre={"action"} handlePreviewClick={handlePreviewClick} addToFaves={(movie) => addToFaves(movie)} />
+                <MoviesContainer movies={docuMovies} genre={"documentary"} handlePreviewClick={handlePreviewClick} addToFaves={(movie) => addToFaves(movie)} />
+                <MoviesContainer movies={dramaMovies} genre={"drama & family"} handlePreviewClick={handlePreviewClick} addToFaves={(movie) => addToFaves(movie)} />
+                <MoviesContainer movies={scifiMovies} genre={"sci-fi"} handlePreviewClick={handlePreviewClick} addToFaves={(movie) => addToFaves(movie)} />
+                <MoviesContainer movies={thrillerMovies} genre={"thriller"} handlePreviewClick={handlePreviewClick} addToFaves={(movie) => addToFaves(movie)} />
             </div>
         </div>
     )
