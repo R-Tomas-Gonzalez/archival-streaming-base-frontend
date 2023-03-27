@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaRegHeart } from "react-icons/fa";
+import { TiDeleteOutline } from "react-icons/ti";
 
 function UserFavesGameCard(props) {
     const image = props.game.background_image
@@ -15,7 +15,7 @@ function UserFavesGameCard(props) {
             <div className="game-ui-card" onClick={() => props.handlePreviewClick(props.game)}>
                 <div className="game-card-image">
                     <img className="image" srcSet={`${newImage} 2x`} alt='game' />
-                    <button className="add-faves-btn" data-text="add to faves" onClick={(e) => { e.stopPropagation(); props.addToFaves(props.game) }}><FaRegHeart size="1.5em" /></button>
+                    <button className="delete-user-fave-btn" data-text="delete from faves" onClick={() => props.handleDelete(props.movie)}><TiDeleteOutline size="2em" /></button>
                 </div>
                 <div className="card-title">
                     <h3>{title}</h3>
