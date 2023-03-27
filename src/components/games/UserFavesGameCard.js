@@ -15,7 +15,7 @@ function UserFavesGameCard(props) {
             <div className="game-ui-card" onClick={() => props.handlePreviewClick(props.game)}>
                 <div className="game-card-image">
                     <img className="image" srcSet={`${newImage} 2x`} alt='game' />
-                    <button className="delete-user-fave-btn" data-text="delete from faves" onClick={() => props.handleDelete(props.movie)}><TiDeleteOutline size="2em" /></button>
+                    <button className="delete-user-fave-btn" data-text="delete from faves" onClick={() => props.handleDelete(props.game)}><TiDeleteOutline size="2em" /></button>
                 </div>
                 <div className="card-title">
                     <h3>{title}</h3>
