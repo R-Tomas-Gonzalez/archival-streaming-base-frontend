@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import NavBar from '../components/NavBar';
 import MoviesContainer from '../containers/movies/MoviesContainer';
 import MoviePreviewContainer from '../containers/movies/MoviePreviewContainer';
-import UserFavesContainer from '../containers/UserFavesContainer';
+import MovieFavesContainer from '../containers/MovieFavesContainer';
 
 const movieAPI = process.env.REACT_APP_MOVIE_KEY;
 
@@ -123,7 +123,7 @@ const MoviesPage = (props) => {
         let updatedUser;
 
         try {
-            const updatedUserRes = await fetch(`https://shy-pink-shark-yoke.cyclic.app/users/${userId}`, {
+            const updatedUserRes = await fetch(`https://shy-pink-shark-yoke.cyclic.app/users/${userId}/movies`, {
                 method: 'PATCH',
                 credentials: 'include',
                 headers: {
@@ -146,7 +146,7 @@ const MoviesPage = (props) => {
                 {Object.keys(moviePreview).length === 0 ? <MoviePreviewContainer movie={props.movies[0]} addToFaves={(movie) => addToFaves(movie)} /> : <MoviePreviewContainer movie={moviePreview} addToFaves={(movie) => addToFaves(movie)} />}
             </div>
             <div className="user-favorites-container">
-                <UserFavesContainer currentUser={props.currentUser} movies={userFaves} handlePreviewClick={handlePreviewClick} handleDelete={handleDelete} />
+                <MovieFavesContainer currentUser={props.currentUser} movies={userFaves} handlePreviewClick={handlePreviewClick} handleDelete={handleDelete} />
             </div>
             <hr></hr>
             <div className="user-faves-containers">

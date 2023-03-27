@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import NavBar from '../components/NavBar';
 import GamesContainer from '../containers/games/GamesContainer';
 import GamePreviewContainer from '../containers/games/GamePreviewContainer';
+import GameFavesContainer from '../containers/GameFavesContainer';
 
 const gameAPI = process.env.REACT_APP_GAME_KEY
 
@@ -49,17 +50,87 @@ function GamesPage(props) {
                 setGamePreview(gamePreviewResults);
             });
 
-        // fetch("https://archival-streaming-base.herokuapp.com/game_favorites")
-        //     .then(resp => resp.json())
-        //     .then(gameFaves => setUserFaves(gameFaves))
-    }, [])
+        if (props.currentUser._id) {
+            fetch(`https://shy-pink-shark-yoke.cyclic.app/users/${props.currentUser._id}`)
+                .then(resp => resp.json())
+                .then(data => setUserFaves(data.games))
+        }
+    }, [props.currentUser._id])
 
-    const addToFaves = () => {
+    const addToFaves = async (game) => {
 
+        const userId = props.currentUser._id;
+        let fetchedUser;
+        try {
+            const userRes = await fetch(`https://shy-pink-shark-yoke.cyclic.app/users/${userId}`);
+            fetchedUser = await userRes.json();
+        } catch (error) {
+            console.log(error);
+        }
+
+        const mappedGamesIds = fetchedUser.games.map((userGame) => {
+            return userGame.id;
+        })
+
+        let updatedUser;
+
+        if (!mappedGamesIds.includes(game.id)) {
+            const newGame = {
+                game: game
+            }
+
+            try {
+                const updatedUserRes = await fetch(`https://shy-pink-shark-yoke.cyclic.app/users/${userId}/games`, {
+                    method: 'PATCH',
+                    credentials: 'include',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(newGame)
+                });
+                updatedUser = await updatedUserRes.json();
+                setUserFaves(updatedUser.games);
+            } catch (error) {
+                console.log(error);
+            }
+        }
     }
 
     const handlePreviewClick = (game) => {
         setGamePreview(game);
+    }
+
+    const handleDelete = async (game) => {
+        const userId = props.currentUser._id;
+        let fetchedUser;
+        try {
+            const userRes = await fetch(`https://shy-pink-shark-yoke.cyclic.app/users/${userId}`);
+            fetchedUser = await userRes.json();
+        } catch (error) {
+            console.log(error);
+        }
+
+        const filteredGames = fetchedUser.games.filter((userGames) => {
+            return userGames.id !== game.id;
+        })
+
+        let updatedUser;
+
+        try {
+            const updatedUserRes = await fetch(`https://shy-pink-shark-yoke.cyclic.app/users/${userId}/games`, {
+                method: 'PATCH',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ games: filteredGames })
+            });
+            updatedUser = await updatedUserRes.json();
+            setUserFaves(updatedUser.games);
+        } catch (error) {
+            console.log(error);
+        }
+
     }
 
     return (
@@ -68,9 +139,9 @@ function GamesPage(props) {
             <div>
                 <GamePreviewContainer game={gamePreview} addToFaves={(game) => addToFaves(game)} />
             </div>
-            {/* <div className="user-favorites-container">
-                <UserFavesContainer currentUser={props.currentUser} movies={userFaves} handleStateClick={handleStateClick} handleDelete={handleDelete} />
-            </div> */}
+            <div className="user-favorites-container">
+                <GameFavesContainer currentUser={props.currentUser} games={userFaves} handlePreviewClick={handlePreviewClick} handleDelete={handleDelete} />
+            </div>
             <hr></hr>
             <div className="user-faves-containers">
                 <GamesContainer games={trendingGames} handlePreviewClick={handlePreviewClick} addToFaves={(game) => addToFaves(game)} genre={"trending"} />

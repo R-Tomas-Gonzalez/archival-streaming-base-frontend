@@ -7,7 +7,7 @@ const UserFavesMovieCard = (props) => {
 
     return (
         <div className="favorite-column">
-            <div className="ui-faves-card" onClick={() => props.handleStateClick(props.movie)}>
+            <div className="ui-faves-card" onClick={() => props.handlePreviewClick(props.movie)}>
                 <div className="faves-card">
                     <img className="faves-image" srcSet={`${img} 1.5x`} alt='movie' />
                     <button className="delete-user-fave-btn" data-text="delete from faves" onClick={() => props.handleDelete(props.movie)}><TiDeleteOutline size="2em" /></button>
