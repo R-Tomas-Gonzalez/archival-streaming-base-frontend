@@ -5,6 +5,7 @@ import LoginPage from "./pages/LoginPage";
 import MoviesPage from './pages/MoviesPage';
 import HomePage from './pages/HomePage';
 import GamesPage from './pages/GamesPage';
+import ImagesPage from './pages/ImagesPage';
 import axios from 'axios';
 
 const pixAPI = process.env.REACT_APP_PIX_KEY
@@ -86,15 +87,6 @@ function App() {
   return (
     <div className="App-background">
       <div className="App">
-        {/* <button onClick={() => checkLoginStatus()}>
-          get
-        </button>
-        <button onClick={() => handleLogout()}>
-          destroy
-        </button>
-        <button onClick={() => returnData()}>
-          returnData
-        </button> */}
         <Routes>
           <Route
             exact
@@ -117,12 +109,12 @@ function App() {
             element={(<GamesPage currentUser={user} handleLogout={() => handleLogout()} games={games} />
             )}
           />
-          {/* <Route
-              exact
-              path={"/images"}
-              render={props => (<ImagesPage {...props} currentUser={user} handleLogout={this.handleLogout} photos={photos} />
-              )}
-            /> */}
+          <Route
+            exact
+            path={"/images"}
+            element={(<ImagesPage currentUser={user} handleLogout={() => handleLogout} photos={photos} />
+            )}
+          />
         </Routes>
       </div>
     </div>

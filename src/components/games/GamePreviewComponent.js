@@ -26,9 +26,8 @@ const GamePreviewComponent = (props) => {
     return (
         <div className="preview-header">
             <div className="preview-background">
-                <div className="empty-div"></div>
                 <img className="preview-image" srcSet={`${backdropImg} 4x`} alt="preview" />
-                <div className="poster-overlay" />
+                <div className="image-poster-overlay" />
             </div>
             <div className="game-preview-details" id="details">
                 <div className="title-release">

@@ -21,7 +21,7 @@ const NavBar = (props) => {
                 <span className="middle-links">
                     <li><NavLink className="mid-links" to="/movies">Movies</NavLink></li>
                     <li><NavLink className="mid-links" to="/games">Games</NavLink></li>
-                    {/* <li><NavLink className="mid-links" to="/images">Images</NavLink></li> */}
+                    <li><NavLink className="mid-links" to="/images">Images</NavLink></li>
                 </span>
                 <NavLink className="mid-links" to="/" onClick={() => props.handleLogoutClick()}>
                     <li>
