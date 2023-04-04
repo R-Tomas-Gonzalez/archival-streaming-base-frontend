@@ -86,7 +86,7 @@ const MoviesPage = (props) => {
             }
 
             try {
-                const updatedUserRes = await fetch(`https://shy-pink-shark-yoke.cyclic.app/users/${userId}`, {
+                const updatedUserRes = await fetch(`https://shy-pink-shark-yoke.cyclic.app/users/${userId}/movies`, {
                     method: 'PATCH',
                     credentials: 'include',
                     headers: {

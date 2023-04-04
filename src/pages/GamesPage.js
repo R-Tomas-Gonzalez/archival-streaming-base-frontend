@@ -58,7 +58,6 @@ function GamesPage(props) {
     }, [props.currentUser._id])
 
     const addToFaves = async (game) => {
-
         const userId = props.currentUser._id;
         let fetchedUser;
         try {
